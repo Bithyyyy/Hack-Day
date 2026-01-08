@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mood Explorer Game</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+    color: #111;
+    text-align: center;
+    padding: 50px;
+    min-height: 100vh;
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  .question { display: none; margin-top: 50px;}
+  .active { display: block;}
+  button {
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+  }
+  .story { font-size: 20px; margin-bottom: 30px;}
+  
+  /* Shape buttons */
+  .shape {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+  }
+  .circle { border-radius: 50%; background-image: url('https://i.imgur.com/1bX5QH6.png'); }
+  .triangle { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 80px solid #ffcc00; background: none; }
+  .square { background-image: url('https://i.imgur.com/3G7nmJC.png'); }
+  .trapezium { width: 80px; height: 0; border-bottom: 60px solid #00ccff; border-left: 20px solid transparent; border-right: 20px solid transparent; background: none; }
+</style>
+</head>
+<body>
+
+<h1>Welcome to the Mood Explorer!</h1>
+<p>Discover your inner tendencies by answering a series of fun questions.</p>
+<button id="startBtn">Start Game</button>
+
+
+
+<div id="q1" class="question">
+  <div class="story">Pick a shape that feels right:</div>
+  <button class="shape circle" onclick="choose(0,1)"></button>
+  <button class="shape triangle" onclick="choose(1,1)"></button>
+  <button class="shape square" onclick="choose(2,1)"></button>
+  <button class="shape trapezium" onclick="choose(3,1)"></button>
+</div>
+
+<div id="q2" class="question">
+  <div class="story">Pick a color you like most:</div>
+  <button style="background-color:red;color:#fff;" onclick="choose(4,2)">Red</button>
+  <button style="background-color:blue;color:#fff;" onclick="choose(5,2)">Blue</button>
+  <button style="background-color:green;color:#fff;" onclick="choose(6,2)">Green</button>
+  <button style="background-color:yellow;color:#111;" onclick="choose(7,2)">Yellow</button>
+</div>
+
+<div id="q3" class="question">
+  <div class="story">Pick a pattern combination:</div>
+  <button onclick="choose(8,3)">▲●▲●</button>
+  <button onclick="choose(9,3)">★□★□</button>
+  <button onclick="choose(0,3)">●▲●▲</button>
+  <button onclick="choose(1,3)">□★□★</button>
+</div>
+
+<div id="q4" class="question">
+  <div class="story">Choose a landscape you prefer:</div>
+  <button onclick="choose(2,4)">🏞 Mountains</button>
+  <button onclick="choose(6,4)">🌊 Beach</button>
+  <button onclick="choose(4,4)">🌳 Forest</button>
+  <button onclick="choose(7,4)">🏜 Desert</button>
+</div>
+
+<div id="q5" class="question">
+  <div class="story">Pick a musical instrument you like:</div>
+  <button onclick="choose(1,5)">🎸 Guitar</button>
+  <button onclick="choose(3,5)">🥁 Drums</button>
+  <button onclick="choose(5,5)">🎹 Piano</button>
+  <button onclick="choose(8,5)">🎻 Violin</button>
+</div>
+
+<div id="q6" class="question">
+  <div class="story">Pick a type of weather you enjoy:</div>
+  <button onclick="choose(4,6)">☀️ Sunny</button>
+  <button onclick="choose(6,6)">🌧 Rainy</button>
+  <button onclick="choose(7,6)">❄️ Snowy</button>
+  <button onclick="choose(9,6)">🌪 Windy</button>
+</div>
+
+<div id="q7" class="question">
+  <div class="story">Choose a favorite activity:</div>
+  <button onclick="choose(0,7)">Reading 📚</button>
+  <button onclick="choose(5,7)">Dancing 💃</button>
+  <button onclick="choose(3,7)">Gaming 🎮</button>
+  <button onclick="choose(2,7)">Painting 🎨</button>
+</div>
+
+<div id="q8" class="question">
+  <div class="story">Pick a time of day you feel most energetic:</div>
+  <button onclick="choose(6,8)">Morning 🌅</button>
+  <button onclick="choose(1,8)">Afternoon ☀️</button>
+  <button onclick="choose(7,8)">Evening 🌇</button>
+  <button onclick="choose(8,8)">Night 🌙</button>
+</div>
+
+<div id="q9" class="question">
+  <div class="story">Pick a snack you’d enjoy:</div>
+  <button onclick="choose(2,9)">🍎 Apple</button>
+  <button onclick="choose(0,9)">🍫 Chocolate</button>
+  <button onclick="choose(9,9)">🍿 Popcorn</button>
+  <button onclick="choose(4,9)">🍪 Cookie</button>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="question">
+  <h2>Your Mood is:</h2>
+  <div id="resultText" style="font-size:28px;margin-top:20px;"></div>
+</div>
+
+<script>
+let scores = Array(10).fill(0);
+let currentQ = 1;
+
+document.getElementById('startBtn').onclick = function() {
+  this.style.display = 'none';
+  showQuestion(currentQ);
+}
+
+function showQuestion(num) {
+  document.getElementById('q' + num).classList.add('active');
+}
+
+function choose(moodIndex, question) {
+  scores[moodIndex]++;
+  document.getElementById('q' + question).classList.remove('active');
+  currentQ++;
+  if(currentQ <= 9) { // updated total number of questions
+    showQuestion(currentQ);
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  let max = Math.max(...scores);
+  let idx = scores.indexOf(max);
+  let moods = [
+    "Cheerful 😄",
+    "Cool 😎",
+    "Thoughtful 🤔",
+    "Angry 😡",
+    "Relaxed 😌",
+    "Excited 🤩",
+    "Calm 🌊",
+    "Curious 🧐",
+    "Playful 🐾",
+    "Focused 🎯"
+  ];
+  document.getElementById('resultText').innerText = moods[idx];
+  document.getElementById('result').classList.add('active');
+}
+</script>
+</body>
+</html>
