@@ -14,7 +14,7 @@ function choose(moodIndex, question) {
   scores[moodIndex]++;
   document.getElementById('q' + question).classList.remove('active');
   currentQ++;
-  if(currentQ <= 9) { // updated total number of questions
+  if(currentQ <= 9) { 
     showQuestion(currentQ);
   } else {
     showResult();

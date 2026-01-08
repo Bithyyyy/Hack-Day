@@ -32,7 +32,7 @@ body {
   }
   .story { font-size: 20px; margin-bottom: 30px;}
   
-  /* Shape buttons */
+
   .shape {
     width: 80px;
     height: 80px;
@@ -40,7 +40,7 @@ body {
     background-size: cover;
     background-position: center;
   }
-  .circle { border-radius: 50%; background-image: url('https://i.imgur.com/1bX5QH6.png'); }
+  .circle { border-radius: 50%;  }
   .triangle { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 80px solid #ffcc00; background: none; }
-  .square { background-image: url('https://i.imgur.com/3G7nmJC.png'); }
+  .square { background-image: url(); }
   .trapezium { width: 80px; height: 0; border-bottom: 60px solid #00ccff; border-left: 20px solid transparent; border-right: 20px solid transparent; background: none; }
